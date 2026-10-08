@@ -1,0 +1,366 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/outfit';
+@import './tokens.css';
+
+@theme inline {
+  --color-forest: var(--stz-forest);
+  --color-forest-deep: var(--stz-forest-deep);
+  --color-forest-soft: var(--stz-forest-soft);
+  --color-forest-night: var(--stz-forest-night);
+  --color-blush: var(--stz-blush);
+  --color-clay: var(--stz-clay);
+  --color-gold: var(--stz-gold);
+  --color-gold-dark: var(--stz-gold-dark);
+  --color-sand: var(--stz-sand);
+  --color-sand-soft: var(--stz-sand-soft);
+  --color-cream: var(--stz-cream);
+  --color-ink: var(--stz-ink);
+  --color-muted: var(--stz-muted);
+  --color-muted-soft: var(--stz-muted-soft);
+  --color-mist: var(--stz-mist);
+  --color-whatsapp: var(--stz-whatsapp);
+  --color-telegram: var(--stz-telegram);
+  --font-sans: var(--stz-font-sans);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--stz-font-sans);
+    color: var(--stz-ink);
+    background-color: var(--stz-cream);
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body ::selection {
+    background: color-mix(in srgb, var(--stz-gold) 30%, transparent);
+    color: var(--stz-forest);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-friendly,
+  .font-serif-editorial {
+    font-family: var(--stz-font-sans);
+    letter-spacing: -0.02em;
+  }
+
+  /* Keep the fixed header below the WordPress admin bar for logged-in editors. */
+  :root {
+    --stz-admin-offset: 0px;
+  }
+  body.admin-bar {
+    --stz-admin-offset: var(--wp-admin--admin-bar--height, 32px);
+  }
+  @media (max-width: 782px) {
+    body.admin-bar {
+      --stz-admin-offset: 46px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Scrollbars (ported from ui/src/index.css) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--stz-sand-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: #d1c7bc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a99e91;
+}
+
+/* Rich text coming from the WordPress editor (tour overview, articles, pages). */
+.stz-prose {
+  font-weight: 300;
+  line-height: 1.8;
+  color: #464d49;
+}
+.stz-prose > * + * {
+  margin-top: 1.1em;
+}
+.stz-prose h2,
+.stz-prose h3,
+.stz-prose h4 {
+  margin-top: 1.8em;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--stz-ink);
+}
+.stz-prose h2 {
+  font-size: 1.6rem;
+}
+.stz-prose h3 {
+  font-size: 1.3rem;
+}
+.stz-prose .lead {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--stz-ink);
+  font-weight: 400;
+}
+.stz-prose a {
+  color: var(--stz-forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.stz-prose ul,
+.stz-prose ol {
+  padding-inline-start: 1.4em;
+}
+.stz-prose ul {
+  list-style: disc;
+}
+.stz-prose ol {
+  list-style: decimal;
+}
+.stz-prose img,
+.stz-prose video,
+.stz-prose iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.stz-prose blockquote {
+  border-inline-start: 3px solid var(--stz-gold);
+  padding-inline-start: 1em;
+  font-style: italic;
+  color: var(--stz-ink);
+}
+.stz-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.stz-prose th,
+.stz-prose td {
+  border: 1px solid var(--stz-sand);
+  padding: 0.5em 0.75em;
+  text-align: start;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion system
+ * One easing curve, short distances, transform/opacity only. Everything is
+ * switched off for people who ask for reduced motion (bottom of this block).
+ * ------------------------------------------------------------------------ */
+
+/* Scroll reveal: <el data-reveal="up|fade|scale|left|right"> gets data-in when it enters the viewport.
+   An animation (not a transition) is used so hover transitions on the same element keep working. */
+[data-reveal]:not([data-in]) {
+  opacity: 0;
+}
+[data-reveal][data-in] {
+  animation: stz-reveal-up 0.95s var(--stz-ease) var(--d, 0ms) backwards;
+}
+[data-reveal='fade'][data-in] {
+  animation-name: stz-reveal-fade;
+}
+[data-reveal='scale'][data-in] {
+  animation-name: stz-reveal-scale;
+}
+[data-reveal='left'][data-in] {
+  animation-name: stz-reveal-left;
+}
+[data-reveal='right'][data-in] {
+  animation-name: stz-reveal-right;
+}
+
+@keyframes stz-reveal-up {
+  from { opacity: 0; transform: translate3d(0, 34px, 0); }
+}
+@keyframes stz-reveal-fade {
+  from { opacity: 0; }
+}
+@keyframes stz-reveal-scale {
+  from { opacity: 0; transform: scale(0.94); }
+}
+@keyframes stz-reveal-left {
+  from { opacity: 0; transform: translate3d(-40px, 0, 0); }
+}
+@keyframes stz-reveal-right {
+  from { opacity: 0; transform: translate3d(40px, 0, 0); }
+}
+
+/* First-screen choreography: starts once the splash screen has lifted (html.stz-ready). */
+.stz-intro {
+  opacity: 0;
+}
+.stz-ready .stz-intro {
+  animation: stz-intro 1.15s var(--stz-ease) var(--d, 0ms) both;
+}
+@keyframes stz-intro {
+  from { opacity: 0; transform: translate3d(0, 38px, 0); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.stz-kenburns {
+  transform: scale(1.12);
+}
+.stz-ready .stz-kenburns {
+  animation: stz-kenburns 2.6s var(--stz-ease) both;
+}
+@keyframes stz-kenburns {
+  from { transform: scale(1.14); }
+  to { transform: scale(1.04); }
+}
+
+/* Slow parallax on the hero picture (progressive enhancement). */
+@supports (animation-timeline: scroll()) {
+  .stz-parallax {
+    animation: stz-parallax linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+  @keyframes stz-parallax {
+    to { transform: translate3d(0, 9%, 0); }
+  }
+}
+
+/* Overlays */
+.stz-fade-in {
+  animation: stz-fade-in 0.35s var(--stz-ease) both;
+}
+.stz-pop-in {
+  animation: stz-pop-in 0.55s var(--stz-ease) both;
+}
+.stz-sheet-in {
+  animation: stz-sheet-in 0.6s var(--stz-ease) both;
+}
+.stz-drawer-in {
+  animation: stz-drawer-in 0.55s var(--stz-ease) both;
+}
+.stz-step-in {
+  animation: stz-step-in 0.5s var(--stz-ease) both;
+}
+@media (min-width: 768px) {
+  .stz-sheet-in {
+    animation-name: stz-pop-in;
+  }
+}
+@keyframes stz-fade-in {
+  from { opacity: 0; }
+}
+@keyframes stz-pop-in {
+  from { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.97); }
+}
+@keyframes stz-sheet-in {
+  from { opacity: 0.6; transform: translate3d(0, 100%, 0); }
+}
+@keyframes stz-drawer-in {
+  from { transform: translate3d(100%, 0, 0); }
+}
+@keyframes stz-step-in {
+  from { opacity: 0; transform: translate3d(22px, 0, 0); }
+}
+
+/* Smooth cross-document page transitions (Chromium); other browsers just navigate. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: stz-vt-out 0.28s var(--stz-ease-soft) both;
+}
+::view-transition-new(root) {
+  animation: stz-vt-in 0.45s var(--stz-ease) both;
+}
+@keyframes stz-vt-out {
+  to { opacity: 0; }
+}
+@keyframes stz-vt-in {
+  from { opacity: 0; }
+}
+
+/* Buttons and cards: tactile press feedback. */
+.stz-press {
+  transition: transform 0.25s var(--stz-ease), background-color 0.3s var(--stz-ease-soft), box-shadow 0.4s var(--stz-ease), color 0.3s var(--stz-ease-soft), border-color 0.3s var(--stz-ease-soft);
+}
+.stz-press:active {
+  transform: scale(0.97);
+}
+
+/* Footer / filter accordions animate by growing a grid row from 0fr to 1fr. */
+.stz-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--stz-ease);
+}
+.stz-collapse[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+.stz-collapse > div {
+  overflow: hidden;
+  min-height: 0;
+}
+/* Desktop footer columns are never collapsed. */
+@media (min-width: 1024px) {
+  .stz-collapse--lg-open {
+    grid-template-rows: 1fr !important;
+  }
+}
+
+/* Horizontal carousels with snapping. */
+.stz-snap {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.stz-snap > * {
+  scroll-snap-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal]:not([data-in]),
+  .stz-intro {
+    opacity: 1;
+  }
+  [data-reveal][data-in],
+  .stz-ready .stz-intro,
+  .stz-ready .stz-kenburns,
+  .stz-parallax,
+  .stz-fade-in,
+  .stz-pop-in,
+  .stz-sheet-in,
+  .stz-drawer-in,
+  .stz-step-in {
+    animation: none !important;
+  }
+  .stz-kenburns {
+    transform: none;
+  }
+  .stz-collapse {
+    transition: none;
+  }
+  @view-transition {
+    navigation: none;
+  }
+}
