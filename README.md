@@ -2,7 +2,7 @@
 
 > A fast, modern WordPress theme for Thailand tour operators — server-rendered routes, a React front end, and a complete booking journey.
 
-[![CI](https://github.com/rnd21312/suntourz-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/rnd21312/suntourz-theme/actions/workflows/ci.yml)
+[![CI](https://github.com/rnd21312/react-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/rnd21312/react-theme/actions/workflows/ci.yml)
 [![License: GPL v2+](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
 ![WordPress 6.5+](https://img.shields.io/badge/WordPress-6.5%2B-21759b)
 ![PHP 8.1+](https://img.shields.io/badge/PHP-8.1%2B-777bb4)
@@ -15,9 +15,9 @@ It is one of three independent projects:
 
 | Project | Role |
 | --- | --- |
-| **suntourz-theme** (this repo) | Public website design |
-| [suntourz-core](https://github.com/rnd21312/suntourz-core) | Tours, departures, bookings, REST API, admin screens — **required** by this theme |
-| [suntourz-visual-editor](https://github.com/rnd21312/suntourz-visual-editor) | Click-to-edit visual editor, works with any theme (optional) |
+| **react-theme** (this repo) | Public website design |
+| [booking-core](https://github.com/rnd21312/booking-core) | Tours, departures, bookings, REST API, admin screens — **required** by this theme |
+| [visual-editor](https://github.com/rnd21312/visual-editor) | Click-to-edit visual editor, works with any theme (optional) |
 
 ## Features
 
@@ -35,12 +35,12 @@ It is one of three independent projects:
 ## Requirements
 
 - WordPress **6.5+**, PHP **8.1+**
-- [Suntourz Core](https://github.com/rnd21312/suntourz-core) plugin (active)
+- [Suntourz Core](https://github.com/rnd21312/booking-core) plugin (active)
 - Node.js 20+ only if you build from source
 
 ## Install
 
-1. Download `suntourz-theme.zip` from the [latest release](https://github.com/rnd21312/suntourz-theme/releases/latest).
+1. Download `react-theme.zip` from the [latest release](https://github.com/rnd21312/react-theme/releases/latest).
 2. Install and activate **Suntourz Core** first.
 3. **Appearance → Themes → Add New → Upload Theme** → choose the zip → **Activate**.
 4. In **Suntourz → Settings → Demo data** press **Import demo tours** (optional).
@@ -62,7 +62,7 @@ Full walkthrough: [docs/installation.md](docs/installation.md).
 ## Project layout
 
 ```
-suntourz-theme/
+react-theme/
 ├── style.css            theme header (visual styles live in the Vite bundle)
 ├── functions.php        bootstrap
 ├── inc/                 PHP: SEO, brand, queries, render, Vite loader

@@ -21,10 +21,10 @@ jobs:
           npm run build
       - name: Package
         run: |
-          mkdir -p /tmp/pkg/suntourz-theme
-          rsync -a --exclude='.git' --exclude='.github' --exclude='frontend' --exclude='docs' --exclude='tests' --exclude='phpunit.xml.dist' --exclude='*.map' ./ /tmp/pkg/suntourz-theme/
-          (cd /tmp/pkg && zip -qr $GITHUB_WORKSPACE/suntourz-theme.zip suntourz-theme)
+          mkdir -p /tmp/pkg/react-theme
+          rsync -a --exclude='.git' --exclude='.github' --exclude='frontend' --exclude='docs' --exclude='tests' --exclude='phpunit.xml.dist' --exclude='*.map' ./ /tmp/pkg/react-theme/
+          (cd /tmp/pkg && zip -qr $GITHUB_WORKSPACE/react-theme.zip react-theme)
       - name: Publish release asset
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$GITHUB_REF_NAME" suntourz-theme.zip --title "$GITHUB_REF_NAME" --generate-notes || gh release upload "$GITHUB_REF_NAME" suntourz-theme.zip --clobber
+        run: gh release create "$GITHUB_REF_NAME" react-theme.zip --title "$GITHUB_REF_NAME" --generate-notes || gh release upload "$GITHUB_REF_NAME" react-theme.zip --clobber

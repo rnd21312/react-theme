@@ -6,27 +6,27 @@
 | --- | --- |
 | WordPress | 6.5 |
 | PHP | 8.1 |
-| Plugin | [Suntourz Core](https://github.com/rnd21312/suntourz-core) |
+| Plugin | [Suntourz Core](https://github.com/rnd21312/booking-core) |
 | Node.js (source builds only) | 20 |
 
 ## Option A — release zips (recommended)
 
-1. Download `suntourz-core.zip` and `suntourz-theme.zip` from the releases of the two repositories.
-2. **Plugins → Add New → Upload Plugin** → `suntourz-core.zip` → **Install Now** → **Activate**.
-3. **Appearance → Themes → Add New → Upload Theme** → `suntourz-theme.zip` → **Install Now** → **Activate**.
+1. Download `booking-core.zip` and `react-theme.zip` from the releases of the two repositories.
+2. **Plugins → Add New → Upload Plugin** → `booking-core.zip` → **Install Now** → **Activate**.
+3. **Appearance → Themes → Add New → Upload Theme** → `react-theme.zip` → **Install Now** → **Activate**.
 
 > Install the plugin first. If the theme is active without Core, WordPress shows a notice asking you to activate it.
 
 ## Option B — build from source
 
 ```bash
-git clone https://github.com/rnd21312/suntourz-theme.git
-cd suntourz-theme/frontend
+git clone https://github.com/rnd21312/react-theme.git
+cd react-theme/frontend
 npm ci
 npm run build          # writes ../dist (with .vite/manifest.json)
 ```
 
-Copy the whole `suntourz-theme` folder (including `dist/`, excluding `frontend/` if you like) to `wp-content/themes/`.
+Copy the whole `react-theme` folder (including `dist/`, excluding `frontend/` if you like) to `wp-content/themes/`.
 
 ## Demo content
 

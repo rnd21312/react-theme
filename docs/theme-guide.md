@@ -30,7 +30,7 @@ All brand settings come from **Suntourz → Settings → General** (provided by 
 - Primary, accent and background colours → CSS custom properties (`inc/brand.php`)
 - Footer description and contact details
 
-For anything beyond that, use the [Suntourz Visual Editor](https://github.com/rnd21312/suntourz-visual-editor) or a child theme.
+For anything beyond that, use the [Suntourz Visual Editor](https://github.com/rnd21312/visual-editor) or a child theme.
 
 ## SEO
 
@@ -53,4 +53,4 @@ The theme never queries tours directly in templates; `inc/queries.php` and `inc/
 
 - **CSS tokens**: `frontend/src/styles/tokens.css`.
 - **Section order on the home page**: `frontend/src/site/pages/Home.tsx` (or the Visual Editor, no code).
-- **Child theme**: create `suntourz-theme-child` with `Template: suntourz-theme` and override any PHP template.
+- **Child theme**: create `react-theme-child` with `Template: react-theme` and override any PHP template.

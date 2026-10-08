@@ -2,7 +2,7 @@
 
 ## Design principle
 
-> The theme only renders. Business logic lives in `suntourz-core`.
+> The theme only renders. Business logic lives in `booking-core`.
 
 WordPress stays the source of truth for URLs, content, SEO and permissions. The theme turns each request into HTML + a JSON payload, and React takes over the interactive parts.
 
@@ -19,7 +19,7 @@ Request ──► WordPress routing ──► theme template (PHP)
                          frontend/src/site/main.tsx
                                       │  fetch (REST, nonce-less public routes)
                                       ▼
-                         suntourz-core  /wp-json/stz/v1/*
+                         booking-core  /wp-json/stz/v1/*
 ```
 
 ## Vite ↔ PHP bridge
